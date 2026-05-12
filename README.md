@@ -1,6 +1,4 @@
-# HomeAssistant-Infrared
-HomeAssistant + Infrared
-
+# HomeAssistant + Infrared
 
 ## ESPHome sample code used in this video
 
@@ -214,6 +212,14 @@ remote_receiver:
 #  carrier_frequency: 38000  # [uncomment to use] 38kHz is standard for most IR
 ```
 
+### Remote transmitter
+```yaml
+remote_transmitter:
+  pin: GPIO26                 # replace with your receiver pin e.g. GPIO26
+  carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
+```
+
+
 ## Button Examples by Brand/Protocol
 
 ### Samsung - Button Template (copy and edit)
@@ -296,14 +302,16 @@ remote_receiver:
 
 ### ESPHome Full Setup Template
 ```yaml
+```yaml
 esphome:
-  name: ir-hub-lounge
-  friendly_name: IR Hub Lounge
+  name: your-device-name        # e.g. ir-hub-lounge (lowercase, hyphens only)
+  friendly_name: Your Device Name  # e.g. IR Hub Lounge (displays in Home Assistant)
 
 esp32:
-  board: esp32dev
+  board: esp32dev      # change if using a different ESP32 board - full list: https://registry.platformio.org/platforms/platformio/espressif32/boards
   framework:
-    type: esp-idf
+    type: esp-idf      # recommended - change to arduino if you experience compatibility issues
+    # Framework guide: https://esphome.io/components/esp32/#framework
 
 # Enable logging
 logger:
@@ -311,11 +319,11 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "Rg8yxTktvgxLPF7Da5/MLyBhUH7tGAcK1s8YVNEWnMI="
+    key: "YOUR_ENCRYPTION_KEY"
 
 ota:
   - platform: esphome
-    password: "9bc4a92d9ca8f7f30c3a0ee04ff92e88"
+    password: "YOUR_OTA_PASSWORD"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -323,18 +331,29 @@ wifi:
 
 # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Ir-Hub-Lounge Fallback Hotspot"
-    password: "TUhHG5Q6tLyA"
+    ssid: "Your-Device Fallback Hotspot"
+    password: "YOUR_AP_PASSWORD"
+
+captive_portal:
+
+##################################
+# REMOTE RECEIVER GOES HERE
+# https://esphome.io/components/remote_receiver/
+##################################
 
 remote_receiver:
   pin:
-    number: GPIO27
-    inverted: true
-    mode:
-      input: true
-      pullup: true
-  dump: all  # To filter specific protocols, comment this out and uncomment dump: below
+    number: GPIO_PIN    # replace with your receiver pin e.g. GPIO27
+    inverted: true      # default: false - set to true for most IR receiver modules (active-low signal)
+    mode:               # required when setting pullup - defines pin behaviour
+      input: true       # always true for a receiver pin
+      pullup: true      # enables internal pull-up resistor - required for some modules e.g. TSOP38238
+  dump: all  # comment this out and uncomment dump: below to filter specific protocols
 # Full protocol list: https://esphome.io/components/remote_receiver/
+
+##################################
+# REMOTE RECEIVER SETTINGS GO HERE
+##################################
 
 #  dump:
 #    - aeha         # AEHA infrared codes
@@ -443,47 +462,54 @@ remote_receiver:
 # Default: 0 (disabled)
 #  carrier_frequency: 38000  # [uncomment to use] 38kHz is standard for most IR
 
+##################################
+# REMOTE TRANSMITTER GOES HERE
+# https://esphome.io/components/remote_transmitter/
+##################################
 
 remote_transmitter:
-  pin: GPIO26
-  carrier_duty_percent: 50%
+  pin: GPIO26                 # replace with your receiver pin e.g. GPIO26
+  carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 
+##################################
+# BINARY SENSORS GO HERE
+##################################
 
-# These are just useful visible Home Assistant entities
-# so we can confirm the device is online and restart it remotely.
 binary_sensor:
-  - platform: status
-    name: "Status"
 
-# ----------------------------------------------------------
 # DEVICE STATUS - confirms device is online in Home Assistant
 binary_sensor:
   - platform: status
     name: "Status"
 
-# ----------------------------------------------------------
+##################################
+# BUTTONS GO HERE
+##################################
+
+button:
+
 # BUILT IN BUTTONS
 button:
   - platform: restart
     name: "Restart"
 
-# IR TRANSMITTER BUTTONS
-# Add your cloned remote buttons below
-# Each button sends an IR signal when pressed in Home Assistant
-
-captive_portal:
+##################################
+# AUTOMATIONS GO HERE
+# https://esphome.io/components/remote_transmitter/#automations
+##################################
 ```
 
-### ESPHome Full Setup Example
+### ESPHome Full Setup Example  DELETE DELETE
 ```yaml
 esphome:
-  name: ir-hub-lounge
-  friendly_name: IR Hub Lounge
+  name: your-device-name        # e.g. ir-hub-lounge (lowercase, hyphens only)
+  friendly_name: Your Device Name  # e.g. IR Hub Lounge (displays in Home Assistant)
 
 esp32:
-  board: esp32dev
+  board: esp32dev      # change if using a different ESP32 board - full list: https://registry.platformio.org/platforms/platformio/espressif32/boards
   framework:
-    type: esp-idf
+    type: esp-idf      # recommended - change to arduino if you experience compatibility issues
+    # Framework guide: https://esphome.io/components/esp32/#framework
 
 # Enable logging
 logger:
@@ -491,11 +517,11 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "Rg8yxTktvgxLPF7Da5/MLyBhUH7tGAcK1s8YVNEWnMI="
+    key: "YOUR_ENCRYPTION_KEY"
 
 ota:
   - platform: esphome
-    password: "9bc4a92d9ca8f7f30c3a0ee04ff92e88"
+    password: "YOUR_OTA_PASSWORD"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -503,18 +529,29 @@ wifi:
 
 # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Ir-Hub-Lounge Fallback Hotspot"
-    password: "TUhHG5Q6tLyA"
+    ssid: "Your-Device Fallback Hotspot"
+    password: "YOUR_AP_PASSWORD"
+
+captive_portal:
+
+##################################
+# REMOTE RECEIVER GOES HERE
+# https://esphome.io/components/remote_receiver/
+##################################
 
 remote_receiver:
   pin:
-    number: GPIO27
-    inverted: true
-    mode:
-      input: true
-      pullup: true
-  dump: all  # To filter specific protocols, comment this out and uncomment dump: below
+    number: GPIO_PIN    # replace with your receiver pin e.g. GPIO27
+    inverted: true      # default: false - set to true for most IR receiver modules (active-low signal)
+    mode:               # required when setting pullup - defines pin behaviour
+      input: true       # always true for a receiver pin
+      pullup: true      # enables internal pull-up resistor - required for some modules e.g. TSOP38238
+  dump: all  # comment this out and uncomment dump: below to filter specific protocols
 # Full protocol list: https://esphome.io/components/remote_receiver/
+
+##################################
+# REMOTE RECEIVER SETTINGS GO HERE
+##################################
 
 #  dump:
 #    - aeha         # AEHA infrared codes
@@ -623,89 +660,42 @@ remote_receiver:
 # Default: 0 (disabled)
 #  carrier_frequency: 38000  # [uncomment to use] 38kHz is standard for most IR
 
+##################################
+# REMOTE TRANSMITTER GOES HERE
+# https://esphome.io/components/remote_transmitter/
+##################################
 
 remote_transmitter:
-  pin: GPIO26
-  carrier_duty_percent: 50%
+  pin: GPIO26                 # replace with your receiver pin e.g. GPIO26
+  carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 
+##################################
+# BINARY SENSORS GO HERE
+##################################
 
-# These are just useful visible Home Assistant entities
-# so we can confirm the device is online and restart it remotely.
+binary_sensor:
+
+# DEVICE STATUS - confirms device is online in Home Assistant
 binary_sensor:
   - platform: status
     name: "Status"
 
+##################################
+# BUTTONS GO HERE
+##################################
+
+button:
+
+# BUILT IN BUTTONS
 button:
   - platform: restart
     name: "Restart"
 
-# Extra buttons go here
-
-  - platform: template
-    name: "OK Button"
-    on_press:
-      - remote_transmitter.transmit_nec:
-          address: 0xFF00
-          command: 0xE31C
-
-#  - platform: template
-#    name: "TV Volume up"  # ← this can be anything you like
-#    on_press:
-#      - remote_transmitter.transmit_samsung:  # ← this is fixed
-#          data: 0xE0E0E01F
-#          nbits: 32          
-
-# TB buttons
-
-  - platform: template
-    name: "TV Volume up"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E0E01F
-          nbits: 32
-
-  - platform: template
-    name: "TV Volume down"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E0D02F
-          nbits: 32
-
-  - platform: template
-    name: "TV Channel up"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E048B7
-          nbits: 32
-
-  - platform: template
-    name: "TV Channel down"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E008F7
-          nbits: 32
-
-  - platform: template
-    name: "TV Power toggle"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E040BF
-          nbits: 32
-
-  - platform: template
-    name: "TV Power on"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E09966
-          nbits: 32
-
-  - platform: template
-    name: "TV Power off"  # ← this can be anything you like
-    on_press:
-      - remote_transmitter.transmit_samsung:  # ← this is fixed
-          data: 0xE0E019E6
-          nbits: 32
-
+##################################
+# AUTOMATIONS GO HERE
+# https://esphome.io/components/remote_transmitter/#automations
+##################################
+```
 
 captive_portal:
 ```
