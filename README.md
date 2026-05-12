@@ -201,7 +201,7 @@ remote_receiver:
 ### Remote transmitter
 ```yaml
 remote_transmitter:
-  pin: GPIO26                 # replace with your receiver pin e.g. GPIO26
+  pin: GPI_PIN                 # replace with your receiver pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 
