@@ -74,7 +74,6 @@ button:
 
 
 ```
-
 ## Remote receiver
 ```yaml
 remote_receiver:
@@ -197,18 +196,18 @@ remote_receiver:
 #  carrier_frequency: 38000  # [uncomment to use] 38kHz is standard for most IR
 ```
 
-### Remote transmitter
+## Remote transmitter
 ```yaml
 remote_transmitter:
   pin: GPI_PIN                 # replace with your receiver pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 
-
-## Button Examples by Brand/Protocol
+# Button Examples by Brand/Protocol
 ⚠️ These go under button: in your ESPHome config
 
-### Samsung - Button Template (copy and edit)
+
+## Samsung - Button Template (copy and edit)
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -218,7 +217,7 @@ remote_transmitter:
           nbits: 32
 ```
 
-### Samsung - Example Button (working code)
+## Samsung - Example Button (working code)
 ```yaml
   - platform: template
     name: "TV Power Off"
@@ -238,7 +237,7 @@ remote_transmitter:
           command: COMMAND_ID
 ```
 
-### NEC - Example Button (working code)
+## NEC - Example Button (working code)
 ```yaml
   - platform: template
     name: "Light Power"
@@ -248,7 +247,7 @@ remote_transmitter:
           command: 0xFF00
 ```
 
-### LG - Button Template (copy and edit)
+## LG - Button Template (copy and edit)
 ```yaml
 - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -258,7 +257,7 @@ remote_transmitter:
           nbits: 32
 ```
 
-### LG - Example Button (working code)
+## LG - Example Button (working code)
 ```yaml
 - platform: template
     name: "Light Power"
@@ -268,7 +267,7 @@ remote_transmitter:
           nbits: 32
 ```
 
-### Pronto - Button Template (copy and edit)
+## Pronto - Button Template (copy and edit)
 ```yaml
 - platform: template
     "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -277,7 +276,7 @@ remote_transmitter:
           data: DATA_ID
 ```
 
-### LG - Example Button (working code)
+## LG - Example Button (working code)
 ```yaml
 - platform: template
     name: "Light Power"
@@ -286,7 +285,7 @@ remote_transmitter:
           data: "0000 006D 0022 0000 015A 00AE 0015 0016 0015 0016 0015 0016 0015 0041 0015 0016 0015 0042 0015 0016 0015 0041 0015 0016 0015 0042 0015 0042 0015 0041 0015 0041 0015 0016 0015 0041 0015 0041 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0041 0015 0041 0015 0041 0015 0041 0015 0042 0015 0042 0015 0042 0015 0041 0015 0181"  
 ```
 
-### RAW - Button Template (copy and edit)
+## RAW - Button Template (copy and edit)
 ```yaml
   - platform: template
     "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -295,7 +294,7 @@ remote_transmitter:
           code: ENTER_CODE_HERE
 ```
 
-###  RAW - Example Button (working code)
+##  RAW - Example Button (working code)
 ```yaml
   - platform: template
     name: Raw Code Power Button
@@ -307,7 +306,7 @@ remote_transmitter:
                  1020, -1019, 510, -511, 1020, -510, 512, -508, 510, -1020, 1022]
 ```
 
-### ESPHome Full Setup Template
+## ESPHome Full Setup Template
 ```yaml
 ```yaml
 esphome:
@@ -506,7 +505,7 @@ button:
 ##################################
 ```
 
-### ESPHome Full Setup Example  DELETE DELETE
+## ESPHome Full Setup Example  DELETE DELETE
 ```yaml
 esphome:
   name: your-device-name        # e.g. ir-hub-lounge (lowercase, hyphens only)
