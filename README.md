@@ -285,6 +285,27 @@ remote_transmitter:
           data: "0000 006D 0022 0000 015A 00AE 0015 0016 0015 0016 0015 0016 0015 0041 0015 0016 0015 0042 0015 0016 0015 0041 0015 0016 0015 0042 0015 0042 0015 0041 0015 0041 0015 0016 0015 0041 0015 0041 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0041 0015 0041 0015 0041 0015 0041 0015 0042 0015 0042 0015 0042 0015 0041 0015 0181"  
 ```
 
+### RAW - Button Template (copy and edit)
+```yaml
+  - platform: template
+    "NAME_OF_BUTTON"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_raw:
+          code: ENTER_CODE_HERE
+```
+
+###  RAW - Example Button (working code)
+```yaml
+  - platform: template
+    name: Raw Code Power Button
+    on_press:
+      - remote_transmitter.transmit_raw:
+          carrier_frequency: 38kHz
+          code: [4088, -1542, 1019, -510, 513, -1019, 510, -509, 511, -510, 1020,
+                 -1020, 1022, -1019, 510, -509, 511, -510, 511, -509, 511, -510,
+                 1020, -1019, 510, -511, 1020, -510, 512, -508, 510, -1020, 1022]
+```
+
 ### ESPHome Full Setup Template
 ```yaml
 ```yaml
