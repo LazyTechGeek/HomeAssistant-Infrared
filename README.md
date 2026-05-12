@@ -78,7 +78,6 @@ button:
 ##################################
 # AUTOMATIONS GO HERE
 ##################################
-``yaml
 
 Remote Receiver
 Configure the IR receiver to scan and identify signals from your existing remote
