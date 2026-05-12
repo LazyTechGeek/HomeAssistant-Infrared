@@ -206,8 +206,7 @@ remote_transmitter:
 
 
 ## Button Examples by Brand/Protocol
-*to go under*
-*button:*
+⚠️ These go under button: in your ESPHome config
 
 ### Samsung - Button Template (copy and edit)
 ```yaml
