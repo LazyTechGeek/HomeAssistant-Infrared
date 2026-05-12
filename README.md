@@ -4,6 +4,95 @@ HomeAssistant + Infrared
 
 ## ESPHome sample code used in this video
 
+## Basic configuration
+
+```yaml
+esphome:
+  name: your-device-name        # e.g. ir-hub-lounge (lowercase, hyphens only)
+  friendly_name: Your Device Name  # e.g. IR Hub Lounge (displays in Home Assistant)
+
+esp32:
+  board: esp32dev      # change if using a different ESP32 board - full list: https://registry.platformio.org/platforms/platformio/espressif32/boards
+  framework:
+    type: esp-idf      # recommended - change to arduino if you experience compatibility issues
+    # Framework guide: https://esphome.io/components/esp32/#framework
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "YOUR_ENCRYPTION_KEY"
+
+ota:
+  - platform: esphome
+    password: "YOUR_OTA_PASSWORD"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+# Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Your-Device Fallback Hotspot"
+    password: "YOUR_AP_PASSWORD"
+
+captive_portal:
+
+##################################
+# REMOTE RECEIVER GOES HERE
+# https://esphome.io/components/remote_receiver/
+##################################
+
+
+##################################
+# REMOTE RECEIVER SETTINGS GO HERE
+##################################
+
+
+##################################
+# REMOTE TRANSMITTER GOES HERE
+# https://esphome.io/components/remote_transmitter/
+##################################
+
+
+##################################
+# AUTOMATIONS GO HERE
+# https://esphome.io/components/remote_transmitter/#automations
+##################################
+
+
+##################################
+# BINARY SENSORS GO HERE
+##################################
+
+binary_sensor:
+
+##################################
+# BUTTONS GO HERE
+##################################
+
+button:
+
+##################################
+# AUTOMATIONS GO HERE
+##################################
+``yaml
+
+Remote Receiver
+Configure the IR receiver to scan and identify signals from your existing remote
+```yaml
+remote_receiver:
+  pin:
+    number: GPIO27
+    inverted: true
+    mode:
+      input: true
+      pullup: true
+  dump: all  # To filter specific protocols, comment this out and uncomment dump: below
+```
+
 ### ESPHome Basic Setup
 ```yaml
 
