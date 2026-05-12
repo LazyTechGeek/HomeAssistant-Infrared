@@ -205,8 +205,9 @@ remote_transmitter:
 ```
 
 
-## Button Examples by Brand/Protocol.
-to go under button:
+## Button Examples by Brand/Protocol
+*to go under*
+*button:*
 
 ### Samsung - Button Template (copy and edit)
 ```yaml
