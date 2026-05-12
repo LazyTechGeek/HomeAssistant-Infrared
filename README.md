@@ -249,7 +249,7 @@ remote_transmitter:
 
 ## LG - Button Template (copy and edit)
 ```yaml
-- platform: template
+  - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_lg:
@@ -259,7 +259,7 @@ remote_transmitter:
 
 ## LG - Example Button (working code)
 ```yaml
-- platform: template
+  - platform: template
     name: "Light Power"
     on_press:
       - remote_transmitter.transmit_lg:
@@ -269,7 +269,7 @@ remote_transmitter:
 
 ## Pronto - Button Template (copy and edit)
 ```yaml
-- platform: template
+  - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_pronto:
@@ -278,7 +278,7 @@ remote_transmitter:
 
 ## Pronto - Example Button (working code)
 ```yaml
-- platform: template
+  - platform: template
     name: "Light Power"
     on_press:
       - remote_transmitter.transmit_pronto:
@@ -288,7 +288,7 @@ remote_transmitter:
 ## RAW - Button Template (copy and edit)
 ```yaml
   - platform: template
-    "NAME_OF_BUTTON"  # ← this can be anything you like
+    name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_raw:
           code: ENTER_CODE_HERE
@@ -297,7 +297,7 @@ remote_transmitter:
 ##  RAW - Example Button (working code)
 ```yaml
   - platform: template
-    name: Raw Code Power Button
+    name: "Raw Code Power Button"
     on_press:
       - remote_transmitter.transmit_raw:
           carrier_frequency: 38kHz
@@ -493,7 +493,6 @@ binary_sensor:
 button:
 
 # BUILT IN BUTTONS
-button:
   - platform: restart
     name: "Restart"
 
