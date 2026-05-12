@@ -202,10 +202,10 @@ remote_transmitter:
   pin: GPIO_PIN                 # replace with your receiver pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
-## Binary sensors
+# Binary sensors
 ⚠️ These go under binart_sensor: in your ESPHome config
 
-# Binary sensor connection status
+## Binary sensor connection status
 
 ```yaml
 # DEVICE STATUS - confirms device is online in Home Assistant
