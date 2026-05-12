@@ -192,7 +192,85 @@ button:
 captive_portal:
 ```
 
+## Button example code to use
 
+### Samsung - Button Template (copy and edit)
+```yaml
+  - platform: template
+    name: "NAME_OF_BUTTON"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_samsung:  # ← this is fixed
+          data: DATA_ID
+          nbits: 32
+```
+
+### Samsung - Example Button (working code)
+```yaml
+  - platform: template
+    name: "TV Power Off"
+    on_press:
+      - remote_transmitter.transmit_samsung:
+          data: 0xE0E019E6
+          nbits: 32
+```
+
+### NEC - Button Template (copy and edit)
+```yaml
+  - platform: template
+    name: "NAME_OF_BUTTON"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0xDEA8
+          command: 0xFF00
+```
+
+### NEC - Example Button (working code)
+```yaml
+  - platform: template
+    name: "Light Power"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0xDEA8
+          command: 0xFF00
+```
+
+### LG - Button Template (copy and edit)
+```yaml
+- platform: template
+    name: "NAME_OF_BUTTON"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_lg:
+          data: 0x157B00FF
+          nbits: 32
+```
+
+### LG - Example Button (working code)
+```yaml
+- platform: template
+    name: "Light Power"
+    on_press:
+      - remote_transmitter.transmit_lg:
+          data: 0x157B00FF
+          nbits: 32
+```
+
+### Pronto - Button Template (copy and edit)
+```yaml
+- platform: template
+    "NAME_OF_BUTTON"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          data: ""
+```
+
+### LG - Example Button (working code)
+```yaml
+- platform: template
+    name: "Light Power"
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          data: "0000 006D 0022 0000 015A 00AE 0015 0016 0015 0016 0015 0016 0015 0041 0015 0016 0015 0042 0015 0016 0015 0041 0015 0016 0015 0042 0015 0042 0015 0041 0015 0041 0015 0016 0015 0041 0015 0041 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0041 0015 0041 0015 0041 0015 0041 0015 0042 0015 0042 0015 0042 0015 0041 0015 0181"  
+```
 
 
 ### ESPHome Full Setup Example
