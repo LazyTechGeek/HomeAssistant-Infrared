@@ -80,12 +80,12 @@ button:
 ```yaml
 remote_receiver:
   pin:
-    number: GPIO27
-    inverted: true
-    mode:
-      input: true
-      pullup: true
-  dump: all  # To filter specific protocols, comment this out and uncomment dump: below
+    number: GPIO_PIN    # replace with your receiver pin e.g. GPIO27
+    inverted: true      # default: false - set to true for most IR receiver modules (active-low signal)
+    mode:               # required when setting pullup - defines pin behaviour
+      input: true       # always true for a receiver pin
+      pullup: true      # enables internal pull-up resistor - required for some modules e.g. TSOP38238
+  dump: all  # comment this out and uncomment dump: below to filter specific protocols
 # Full protocol list: https://esphome.io/components/remote_receiver/
 ```
 ## Remote receiver settings
