@@ -56,12 +56,6 @@ captive_portal:
 
 
 ##################################
-# AUTOMATIONS GO HERE
-# https://esphome.io/components/remote_transmitter/#automations
-##################################
-
-
-##################################
 # BINARY SENSORS GO HERE
 ##################################
 
@@ -73,21 +67,13 @@ binary_sensor:
 
 button:
 
+
 ##################################
 # AUTOMATIONS GO HERE
+# https://esphome.io/components/remote_transmitter/#automations
 ##################################
 
-Remote Receiver
-Configure the IR receiver to scan and identify signals from your existing remote
-```yaml
-remote_receiver:
-  pin:
-    number: GPIO27
-    inverted: true
-    mode:
-      input: true
-      pullup: true
-  dump: all  # To filter specific protocols, comment this out and uncomment dump: below
+
 ```
 
 ## Remote receiver
