@@ -199,7 +199,7 @@ remote_receiver:
 ## Remote transmitter
 ```yaml
 remote_transmitter:
-  pin: GPI_PIN                 # replace with your receiver pin e.g. GPIO26
+  pin: GPIO_PIN                 # replace with your receiver pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 
@@ -270,13 +270,13 @@ remote_transmitter:
 ## Pronto - Button Template (copy and edit)
 ```yaml
 - platform: template
-    "NAME_OF_BUTTON"  # ← this can be anything you like
+    name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_pronto:
           data: DATA_ID
 ```
 
-## LG - Example Button (working code)
+## Pronto - Example Button (working code)
 ```yaml
 - platform: template
     name: "Light Power"
@@ -307,7 +307,6 @@ remote_transmitter:
 ```
 
 ## ESPHome Full Setup Template
-```yaml
 ```yaml
 esphome:
   name: your-device-name        # e.g. ir-hub-lounge (lowercase, hyphens only)
@@ -484,7 +483,6 @@ remote_transmitter:
 binary_sensor:
 
 # DEVICE STATUS - confirms device is online in Home Assistant
-binary_sensor:
   - platform: status
     name: "Status"
 
@@ -672,7 +670,7 @@ remote_receiver:
 ##################################
 
 remote_transmitter:
-  pin: GPIO26                 # replace with your receiver pin e.g. GPIO26
+  pin: GPIO_PIN                 # replace with your receiver pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 
 ##################################
