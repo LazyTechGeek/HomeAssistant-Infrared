@@ -220,8 +220,8 @@ captive_portal:
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_nec:
-          address: 0xDEA8
-          command: 0xFF00
+          address: ADDRESS_ID
+          command: COMMAND_ID
 ```
 
 ### NEC - Example Button (working code)
@@ -240,7 +240,7 @@ captive_portal:
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_lg:
-          data: 0x157B00FF
+          data: DATA_ID
           nbits: 32
 ```
 
@@ -260,7 +260,7 @@ captive_portal:
     "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_pronto:
-          data: ""
+          data: DATA_ID
 ```
 
 ### LG - Example Button (working code)
