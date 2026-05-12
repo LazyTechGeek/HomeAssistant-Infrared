@@ -67,7 +67,6 @@ binary_sensor:
 
 button:
 
-
 ##################################
 # AUTOMATIONS GO HERE
 # https://esphome.io/components/remote_transmitter/#automations
