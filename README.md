@@ -276,6 +276,7 @@ remote_transmitter:
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_raw:
+          carrier_frequency: 38kHz  # 38kHz is standard for most IR devices
           code: ENTER_CODE_HERE
 ```
 &nbsp;
