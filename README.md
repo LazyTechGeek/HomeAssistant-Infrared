@@ -203,7 +203,7 @@ remote_transmitter:
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 # Binary sensors
-⚠️ These go under binary_sensor: in your ESPHome config
+⚠️ These go under **binary_sensor:** in your ESPHome config
 
 ## Binary sensor connection status
 
@@ -214,7 +214,7 @@ remote_transmitter:
 ```
 
 # Button Examples by Brand/Protocol
-⚠️ These go under button: in your ESPHome config
+⚠️ These go under **button:** in your ESPHome config
 
 ## Restart button
 ```yaml
@@ -233,7 +233,7 @@ remote_transmitter:
           nbits: 32
 ```
 
-### NEC - Button Template
+## NEC - Button Template
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
