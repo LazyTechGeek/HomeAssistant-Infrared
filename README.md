@@ -208,9 +208,8 @@ remote_transmitter:
   pin: GPIO_PIN               # replace with your transmitter pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
-# Binary sensors
+## 📡 Binary sensors
 ⚠️ These go under <code><b>binary_sensor:</b></code> in your ESPHome config
-
 ## Binary sensor connection status
 
 ```yaml
@@ -218,8 +217,7 @@ remote_transmitter:
   - platform: status
     name: "Status"
 ```
-
-# Button Examples by Brand/Protocol
+## 🔘 Button Examples by Brand/Protocol
 ⚠️ These go under <code><b>button:</b></code> in your ESPHome config
 
 ## Restart button
@@ -238,7 +236,6 @@ remote_transmitter:
           data: DATA_ID
           nbits: 32
 ```
-
 ## NEC - Button Template
 ```yaml
   - platform: template
