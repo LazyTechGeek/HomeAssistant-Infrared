@@ -1,14 +1,14 @@
 # Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome
 
 In this video I'll show you how to integrate IR control into ESPHome and Home Assistant.
-We'll clone an existing remote, create buttons to control devices like TVs and air conditioning, and set up automations so Home Assistant can do it all for you
+We'll clone an existing remote, create buttons to control devices like TVs and air conditioning, and set up automations so Home Assistant can do it all for you.
 
 ## Watch the video here:
 ▶️ [Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome](PENDING)
 
 ## ESPHome sample code used in this video
 
-## Basic configuration
+## Device Setup Template — just the ESP32 basics, no IR
 
 ```yaml
 esphome:
@@ -205,7 +205,7 @@ remote_receiver:
 ## Remote transmitter
 ```yaml
 remote_transmitter:
-  pin: GPIO_PIN                 # replace with your receiver pin e.g. GPIO26
+  pin: GPIO_PIN               # replace with your transmitter pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 # Binary sensors
@@ -277,7 +277,7 @@ remote_transmitter:
           code: ENTER_CODE_HERE
 ```
 
-## ESPHome Full Setup Template
+## Full IR Setup Template — everything included, ready to go
 ```yaml
 esphome:
   name: your-device-name        # e.g. ir-hub-lounge (lowercase, hyphens only)
@@ -444,7 +444,7 @@ remote_receiver:
 ##################################
 
 remote_transmitter:
-  pin: GPIO_PIN                 # replace with your receiver pin e.g. GPIO26
+  pin: GPIO_PIN               # replace with your transmitter pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 
 ##################################
