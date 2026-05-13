@@ -7,7 +7,7 @@ We'll clone an existing remote, create buttons to control devices like TVs and a
 ▶️ [Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome](PENDING)
 
 ## ESPHome sample code used in this video
-
+&nbsp;
 ## Device Setup Template — just the ESP32 basics, no IR
 
 ```yaml
@@ -80,6 +80,7 @@ button:
 
 
 ```
+&nbsp;
 ## Remote receiver
 ```yaml
 remote_receiver:
@@ -92,6 +93,7 @@ remote_receiver:
   dump: all  # comment this out and uncomment dump: below to filter specific protocols
 # Full protocol list: https://esphome.io/components/remote_receiver/
 ```
+&nbsp;
 ## Remote receiver settings
 ```yaml
 #  dump:
@@ -201,15 +203,17 @@ remote_receiver:
 # Default: 0 (disabled)
 #  carrier_frequency: 38000  # [uncomment to use] 38kHz is standard for most IR
 ```
-
+&nbsp;
 ## Remote transmitter
 ```yaml
 remote_transmitter:
   pin: GPIO_PIN               # replace with your transmitter pin e.g. GPIO26
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
+&nbsp;
 ## 📡 Binary sensors
 ⚠️ These go under <code><b>binary_sensor:</b></code> in your ESPHome config
+&nbsp;
 ## Binary sensor connection status
 
 ```yaml
@@ -217,9 +221,10 @@ remote_transmitter:
   - platform: status
     name: "Status"
 ```
+&nbsp;
 ## 🔘 Button Examples by Brand/Protocol
 ⚠️ These go under <code><b>button:</b></code> in your ESPHome config
-
+&nbsp;
 ## Restart button
 ```yaml
 # BUILT IN BUTTONS
@@ -273,7 +278,7 @@ remote_transmitter:
       - remote_transmitter.transmit_raw:
           code: ENTER_CODE_HERE
 ```
-
+&nbsp;
 ## Full IR Setup Template — everything included, ready to go
 ```yaml
 esphome:
