@@ -203,7 +203,7 @@ remote_transmitter:
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 # Binary sensors
-⚠️ These go under binart_sensor: in your ESPHome config
+⚠️ These go under binary_sensor: in your ESPHome config
 
 ## Binary sensor connection status
 
@@ -216,14 +216,14 @@ remote_transmitter:
 # Button Examples by Brand/Protocol
 ⚠️ These go under button: in your ESPHome config
 
-## Restart button (working code)
+## Restart button
 ```yaml
 # BUILT IN BUTTONS
   - platform: restart
     name: "Restart"
 ```
 
-## Samsung - Button Template (copy and edit)
+## Samsung - Button Template
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -233,17 +233,7 @@ remote_transmitter:
           nbits: 32
 ```
 
-## Samsung - Example Button (working code)
-```yaml
-  - platform: template
-    name: "TV Power Off"
-    on_press:
-      - remote_transmitter.transmit_samsung:
-          data: 0xE0E019E6
-          nbits: 32
-```
-
-### NEC - Button Template (copy and edit)
+### NEC - Button Template
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -253,17 +243,7 @@ remote_transmitter:
           command: COMMAND_ID
 ```
 
-## NEC - Example Button (working code)
-```yaml
-  - platform: template
-    name: "Light Power"
-    on_press:
-      - remote_transmitter.transmit_nec:
-          address: 0xDEA8
-          command: 0xFF00
-```
-
-## LG - Button Template (copy and edit)
+## LG - Button Template
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -273,17 +253,7 @@ remote_transmitter:
           nbits: 32
 ```
 
-## LG - Example Button (working code)
-```yaml
-  - platform: template
-    name: "Light Power"
-    on_press:
-      - remote_transmitter.transmit_lg:
-          data: 0x157B00FF
-          nbits: 32
-```
-
-## Pronto - Button Template (copy and edit)
+## Pronto - Button Template
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
@@ -292,34 +262,13 @@ remote_transmitter:
           data: DATA_ID
 ```
 
-## Pronto - Example Button (working code)
-```yaml
-  - platform: template
-    name: "Light Power"
-    on_press:
-      - remote_transmitter.transmit_pronto:
-          data: "0000 006D 0022 0000 015A 00AE 0015 0016 0015 0016 0015 0016 0015 0041 0015 0016 0015 0042 0015 0016 0015 0041 0015 0016 0015 0042 0015 0042 0015 0041 0015 0041 0015 0016 0015 0041 0015 0041 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0016 0015 0041 0015 0041 0015 0041 0015 0041 0015 0042 0015 0042 0015 0042 0015 0041 0015 0181"  
-```
-
-## RAW - Button Template (copy and edit)
+## RAW - Button Template
 ```yaml
   - platform: template
     name: "NAME_OF_BUTTON"  # ← this can be anything you like
     on_press:
       - remote_transmitter.transmit_raw:
           code: ENTER_CODE_HERE
-```
-
-##  RAW - Example Button (working code)
-```yaml
-  - platform: template
-    name: "Raw Code Power Button"
-    on_press:
-      - remote_transmitter.transmit_raw:
-          carrier_frequency: 38kHz
-          code: [4088, -1542, 1019, -510, 513, -1019, 510, -509, 511, -510, 1020,
-                 -1020, 1022, -1019, 510, -509, 511, -510, 511, -509, 511, -510,
-                 1020, -1019, 510, -511, 1020, -510, 512, -508, 510, -1020, 1022]
 ```
 
 ## ESPHome Full Setup Template
