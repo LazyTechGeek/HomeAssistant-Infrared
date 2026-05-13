@@ -203,7 +203,7 @@ remote_transmitter:
   carrier_duty_percent: 50%   # 50% for IR LEDs, 100% for RF (433MHz)
 ```
 # Binary sensors
-⚠️ These go under **binary_sensor:** in your ESPHome config
+⚠️ These go under <code><b>binary_sensor:</b></code> in your ESPHome config
 
 ## Binary sensor connection status
 
@@ -214,7 +214,7 @@ remote_transmitter:
 ```
 
 # Button Examples by Brand/Protocol
-⚠️ These go under **button:** in your ESPHome config
+⚠️ These go under <code><b>button:</b></code> in your ESPHome config
 
 ## Restart button
 ```yaml
