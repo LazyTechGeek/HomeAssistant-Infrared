@@ -475,3 +475,169 @@ button:
 # https://esphome.io/components/remote_transmitter/#automations
 ##################################
 ```
+
+&nbsp;
+## AC Control with Auto Off Timer
+```yaml
+##################################
+# GLOBALS
+# Variables stored in memory to track AC timer state
+# ac_timer_running: whether timer is active
+# ac_timer_remaining: minutes remaining on timer
+##################################
+
+globals:
+  - id: ac_timer_running
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
+  - id: ac_timer_remaining
+    type: int
+    restore_value: no
+    initial_value: '0'
+
+##################################
+# NUMBERS
+# Creates a slider in Home Assistant to set timer duration
+##################################
+
+number:
+  - platform: template
+    name: "AC Timer"
+    id: ac_timer_duration
+    min_value: 5
+    max_value: 120
+    step: 5
+    initial_value: 30
+    unit_of_measurement: min
+    optimistic: true
+    icon: mdi:timer
+
+ ##################################
+# TEXT SENSORS
+# Shows text based state values in Home Assistant
+# AC Timer Status displays minutes remaining or Off
+##################################
+
+text_sensor:
+  - platform: template
+    name: "AC Timer Status"
+    id: ac_timer_status
+    icon: mdi:timer
+
+##################################
+# BINARY SENSORS GO HERE
+# Shows on/off state values in Home Assistant
+##################################
+
+binary_sensor:
+
+# DEVICE STATUS - confirms device is online in Home Assistant
+  - platform: status
+    name: "Status"
+
+# AC STATUS - tracks whether AC is on or off
+# Note: reflects what ESPHome has sent, not the physical AC state
+# If AC is controlled manually via original remote this will be incorrect
+  - platform: template
+    name: "AC Status"
+    id: ac_status
+    icon: mdi:air-conditioner
+
+##################################
+# INTERVAL
+# Runs every 60 seconds to count down the AC timer
+# Only acts if AC timer is running
+##################################
+
+interval:
+  - interval: 60s
+    then:
+      - if:
+          condition:
+            lambda: 'return id(ac_timer_running) && id(ac_timer_remaining) > 0;'
+          then:
+            - globals.set:
+                id: ac_timer_remaining
+                value: !lambda 'return id(ac_timer_remaining) - 1;'
+            - text_sensor.template.publish:
+                id: ac_timer_status
+                state: !lambda 'return to_string(id(ac_timer_remaining)) + " min remaining";'
+            - if:
+                condition:
+                  lambda: 'return id(ac_timer_remaining) == 0;'
+                then:
+                  # Send AC off command when timer expires
+                  - remote_transmitter.transmit_nec:
+                      address: 0x1234
+                      command: 0x9ABC
+                  - globals.set:
+                      id: ac_timer_running
+                      value: 'false'
+                  - binary_sensor.template.publish:
+                      id: ac_status
+                      state: false
+                  - text_sensor.template.publish:
+                      id: ac_timer_status
+                      state: "Off"
+
+##################################
+# BUTTONS GO HERE
+##################################
+
+button:
+
+# BUILT IN BUTTONS
+  - platform: restart
+    name: "Restart"
+
+# AC CONTROL BUTTONS
+# Replace address and command values with your scanned AC remote codes
+  - platform: template
+    name: "AC On"
+    on_press:
+      - binary_sensor.template.publish:
+          id: ac_status
+          state: true
+      - remote_transmitter.transmit_nec:
+          address: 0x1234  # replace with your scanned AC address
+          command: 0x5678  # replace with your scanned AC on command
+
+  - platform: template
+    name: "AC Off"
+    on_press:
+      - globals.set:
+          id: ac_timer_running
+          value: 'false'
+      - binary_sensor.template.publish:
+          id: ac_status
+          state: false
+      - text_sensor.template.publish:
+          id: ac_timer_status
+          state: "Off"
+      - remote_transmitter.transmit_nec:
+          address: 0x1234  # replace with your scanned AC address
+          command: 0x9ABC  # replace with your scanned AC off command
+
+# Turns AC on and auto off after duration set by AC Timer slider
+# Note: timer accuracy is within ~60 seconds due to interval timing
+  - platform: template
+    name: "AC On with Timer"
+    on_press:
+      - binary_sensor.template.publish:
+          id: ac_status
+          state: true
+      - globals.set:
+          id: ac_timer_running
+          value: 'true'
+      - globals.set:
+          id: ac_timer_remaining
+          value: !lambda 'return id(ac_timer_duration).state;'
+      - text_sensor.template.publish:
+          id: ac_timer_status
+          state: !lambda 'return to_string(id(ac_timer_remaining)) + " min remaining";'
+      - remote_transmitter.transmit_nec:
+          address: 0x1234  # replace with your scanned AC address
+          command: 0x5678  # replace with your scanned AC on command
+```
