@@ -641,7 +641,9 @@ button:
           address: 0x1234  # replace with your scanned AC address
           command: 0x5678  # replace with your scanned AC on command
 ```
-
+&nbsp;
+## 🤖 Automations
+⚠️ These go in your Home Assistant automations, not ESPHome
 &nbsp;
 ## IR TV Control Automation
 ```yaml
