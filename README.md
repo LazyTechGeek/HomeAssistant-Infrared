@@ -641,3 +641,77 @@ button:
           address: 0x1234  # replace with your scanned AC address
           command: 0x5678  # replace with your scanned AC on command
 ```
+
+&nbsp;
+## IR TV Control Automation
+```yaml
+alias: IR TV Control
+description: Doorbell-triggered TV mute and automatic TV power off when away.
+
+triggers:
+
+  # Trigger 1:
+  # Detect when either the front door or hallway doorbell sensor changes to ON
+  - trigger: state
+    entity_id:
+      - YOUR_FRONT_DOOR_DING_SENSOR
+      - YOUR_HALL_DING_SENSOR
+    to:
+      - "on"
+    id: "1"
+
+  # Trigger 2:
+  # Detect when a person has been away from home for 2 minutes    
+  - trigger: state
+    entity_id:
+      - person.YOUR_PERSON_ENTITY
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+    from:
+      - home
+    id: "2"
+conditions: []
+actions:
+  - choose:
+
+      # If Trigger 1 fired (doorbell pressed)  
+      - conditions:
+          - condition: trigger
+            id:
+              - "1"
+        sequence:
+
+          # Send IR mute command to the TV        
+          - action: button.press
+            metadata: {}
+            target:
+              entity_id:
+                - button.YOUR_TV_MUTE_BUTTON
+            data: {}
+          - delay:
+          # Prevent the automation from running again for 5 minutes
+          # while in single mode to avoid repeated mute commands          
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+
+      # If Trigger 2 fired (person away for 2 minutes)             
+      - conditions:
+          - condition: trigger
+            id:
+              - "2"
+        sequence:
+
+          # Send IR power off command to the TV        
+          - action: button.press
+            metadata: {}
+            target:
+              entity_id: button.YOUR_TV_POWER_OFF_BUTTON
+            data: {}
+
+# Only allow one instance of this automation at a time
+mode: single
+```
