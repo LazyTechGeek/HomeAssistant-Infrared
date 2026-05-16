@@ -279,7 +279,9 @@ remote_transmitter:
           code: ENTER_CODE_HERE
 ```
 ## Brightness Buttons (with Percentage Presets)
-> ⚠️ These buttons are calibrated for a light remote with 12 brightness levels. Adjust the repeat counts to match your own remote.
+⚠️ These buttons are calibrated for a light remote with 12 brightness levels. Adjust the repeat counts to match your own remote.
+&nbsp;
+
 ```yaml
 ##################################
 # BRIGHTNESS BUTTONS
