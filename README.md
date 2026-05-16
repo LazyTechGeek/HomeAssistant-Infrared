@@ -278,7 +278,8 @@ remote_transmitter:
           carrier_frequency: 38kHz  # 38kHz is standard for most IR devices
           code: ENTER_CODE_HERE
 ```
-
+## Brightness Buttons (with Percentage Presets)
+> ⚠️ These buttons are calibrated for a light remote with 12 brightness levels. Adjust the repeat counts to match your own remote.
 ```yaml
 ##################################
 # BRIGHTNESS BUTTONS
