@@ -269,7 +269,6 @@ remote_transmitter:
       - remote_transmitter.transmit_pronto:
           data: DATA_ID
 ```
-
 ## RAW - Button Template
 ```yaml
   - platform: template
@@ -279,6 +278,159 @@ remote_transmitter:
           carrier_frequency: 38kHz  # 38kHz is standard for most IR devices
           code: ENTER_CODE_HERE
 ```
+
+```yaml
+##################################
+# BRIGHTNESS BUTTONS
+##################################
+
+
+  - platform: template
+    name: "Brightness Up"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_nec:
+
+          # Replace with the address from your own IR remote
+          address: 0xDEA8
+
+          # Replace this with your own brightness up command
+          command: 0xFF00
+
+  - platform: template
+    name: "Brightness Down"  # ← this can be anything you like
+    on_press:
+      - remote_transmitter.transmit_nec:
+
+          # Replace with the address from your own IR remote
+          address: 0xDEA8
+          
+          # Replace this with your own brightness down command
+          command: 0xF20D
+
+##################################
+# BRIGHTNESS PERCENTAGE BUTTONS - START
+##################################
+
+  - platform: template
+    name: "Lounge Light 20%"
+    on_press:
+      - repeat:
+          count: 20        # press up to minimum brightness - no up presses needed
+          then:
+            - remote_transmitter.transmit_nec:
+                # Replace with the address from your own IR remote
+                address: 0xDEA8
+
+                # Replace this with your own brightness down command
+                command: 0xF20D
+            - delay: 100ms
+
+
+  - platform: template
+    name: "Lounge Light 40%"
+    on_press:
+      then:
+        - remote_transmitter.transmit_nec:
+           
+           # Replace with the address from your own IR remote
+            address: 0xDEA8
+
+            # Replace this with your own brightness up command
+            command: 0xFF00
+            repeat:
+              times: 20
+              wait_time: 100ms
+        - delay: 500ms
+        - remote_transmitter.transmit_nec:
+
+            # Replace with the address from your own IR remote
+            address: 0xDEA8
+
+            # Replace this with your own brightness down command
+            command: 0xF20D
+            command_repeats: 3
+            repeat:
+              times: 8
+              wait_time: 200ms
+
+
+  - platform: template
+    name: "Lounge Light 60%"
+    on_press:
+      then:
+        - remote_transmitter.transmit_nec:
+
+            # Replace with the address from your own IR remote
+            address: 0xDEA8
+
+            # Replace this with your own brightness up command
+            command: 0xFF00
+            repeat:
+              times: 20
+              wait_time: 100ms
+        - delay: 500ms
+        - remote_transmitter.transmit_nec:
+
+            # Replace with the address from your own IR remote
+            address: 0xDEA8
+
+            # Replace this with your own brightness down command
+            command: 0xF20D
+            command_repeats: 3
+            repeat:
+              times: 5
+              wait_time: 200ms
+
+
+  - platform: template
+    name: "Lounge Light 80%"
+    on_press:
+      then:
+        - remote_transmitter.transmit_nec:
+
+            # Replace with the address from your own IR remote
+            address: 0xDEA8
+
+            # Replace this with your own brightness up command
+            command: 0xFF00
+            repeat:
+              times: 20
+              wait_time: 100ms
+        - delay: 500ms
+        - remote_transmitter.transmit_nec:
+
+            # Replace with the address from your own IR remote
+            address: 0xDEA8
+
+            # Replace this with your own brightness down command
+            command: 0xF20D
+            command_repeats: 3
+            repeat:
+              times: 2
+              wait_time: 200ms
+
+
+  - platform: template
+    name: "Lounge Light 100%"
+    on_press:
+      - repeat:
+          count: 20        # press up to maximum brightness - no down presses needed
+          then:
+            - remote_transmitter.transmit_nec:
+
+                # Replace with the address from your own IR remote
+                address: 0xDEA8
+
+                # Replace this with your own brightness up command
+                command: 0xFF00
+            - delay: 100ms
+
+
+##################################
+# BRIGHTNESS PERCENTAGE BUTTONS - END
+##################################
+```
+
 &nbsp;
 ## Full IR Setup Template — everything included, ready to go
 ```yaml
