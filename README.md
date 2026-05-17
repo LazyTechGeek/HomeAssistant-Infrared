@@ -4,7 +4,7 @@ In this video I'll show you how to integrate IR control into ESPHome and Home As
 We'll clone an existing remote, create buttons to control devices like TVs and air conditioning, and set up automations so Home Assistant can do it all for you.
 
 ## Watch the video here:
-▶️ [Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome](PENDING)
+▶️ [Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome](https://youtu.be/V0-YWqsJjTc)
 
 &nbsp;
 ## All in One Wiring Diagram
