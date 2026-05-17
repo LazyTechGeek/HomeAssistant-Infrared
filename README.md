@@ -7,14 +7,15 @@ We'll clone an existing remote, create buttons to control devices like TVs and a
 ▶️ [Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome](PENDING)
 
 &nbsp;
-## Wiring diagrams.
+## All in One Wiring Diagram
+<p align="center">
+  <img src="assets/IR_Wiring_Diagram_All-in-One.png" width="400">
+</p>
 
-All in One Wiring Diagram
-<img src="assets/IR_Wiring_Diagram_All-in-One.png" width="400">
-
-&nbsp;
-DIY Wiring Diagram
+## DIY Wiring Diagram
+<p align="center">
 <img src="assets/IR_Wiring_Diagram_DIY.png" width="700">
+</p>
 
 ## ESPHome sample code used in this video
 &nbsp;
