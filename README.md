@@ -9,17 +9,18 @@ We'll clone an existing remote, create buttons to control devices like TVs and a
 ## 🛒 Parts List
 
 ### All-in-One Option
-- ESP32 Dev Board x1
-- SweetSerenade Infrared Transmitter-Receiver 360° x1
-- Female to Female Jumper Cables
+- [ESP32 Dev Board x1 (38-pin - requires both 3.3V and 5V pins)](https://www.amazon.co.uk/dp/B0CNYM28CK) - pack of 3  
+- [SweetSerenade IR Transmitter-Receiver 360° Module](https://www.amazon.co.uk/dp/B0DK5F6MH2)
+- [Female to Female Jumper Cables](https://www.amazon.co.uk/dp/B01EV70C78) (ELEGOO 120pcs kit - includes M-F, M-M, F-F)
 
 ### DIY Option
-- ESP32 Dev Board x1 (38-pin version - requires both 3.3V and 5V pins)
-- VS1838B IR Receiver x1
-- 2N2222 Transistor x1
-- 22Ω Resistors x2
-- 1kΩ Resistor x1
-- IR Transmitter LEDs x4 (5mm 940nm)
+- [ESP32 Dev Board x1 (38-pin - requires both 3.3V and 5V pins)](https://www.amazon.co.uk/dp/B0CNYM28CK) - pack of 3  
+- [ELEGOO 32 Pcs Double Sided PCB Board Kit](https://www.amazon.co.uk/dp/B0734XYJPM) - use the 5cm x 7cm board from the kit
+- [2N2222 NPN Transistor x1](https://www.amazon.co.uk/dp/B0CPBR1FGB)
+- 22Ω Resistors x2 ⬎
+- 1kΩ Resistor x1   [AUKENIEN 1250pcs 25 Values Resistor Assortment Kit](https://www.amazon.co.uk/dp/B09MMBPSH9)
+- IR Transmitter LEDs x4 (5mm 940nm) ⬎
+- VS1838B IR Receiver x1               [100PCS 50 Pairs 5mm Infrared Diode LED 940nm](YOUR_AMAZON_LINK)
 
 ## 🖨️ 3D Print Files
 
