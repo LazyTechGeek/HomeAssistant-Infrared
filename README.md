@@ -21,6 +21,11 @@ We'll clone an existing remote, create buttons to control devices like TVs and a
 - 1kΩ Resistor x1
 - IR Transmitter LEDs x4 (5mm 940nm)
 
+## 🖨️ 3D Print Files
+
+- [IR Hub Base](assets/IR_Hub_Base.stl)
+- [IR Hub Lid](assets/IR_Hub_Lid.stl)
+
 &nbsp;
 ## All in One Wiring Diagram
 <p align="center">
