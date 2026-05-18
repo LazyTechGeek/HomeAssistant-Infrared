@@ -6,6 +6,21 @@ We'll clone an existing remote, create buttons to control devices like TVs and a
 ## Watch the video here:
 ▶️ [Infrared (IR) in Home Assistant – Make Dumb Devices Smart with ESPHome](https://youtu.be/V0-YWqsJjTc)
 
+## 🛒 Parts List
+
+### All-in-One Option
+- ESP32 Dev Board x1
+- SweetSerenade Infrared Transmitter-Receiver 360° x1
+- Female to Female Jumper Cables
+
+### DIY Option
+- ESP32 Dev Board x1 (38-pin version - requires both 3.3V and 5V pins)
+- VS1838B IR Receiver x1
+- 2N2222 Transistor x1
+- 22Ω Resistors x2
+- 1kΩ Resistor x1
+- IR Transmitter LEDs x4 (5mm 940nm)
+
 &nbsp;
 ## All in One Wiring Diagram
 <p align="center">
