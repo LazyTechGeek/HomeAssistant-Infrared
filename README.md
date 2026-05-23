@@ -24,8 +24,8 @@ We'll clone an existing remote, create buttons to control devices like TVs and a
 
 ## 🖨️ 3D Print Files
 
-- [IR Hub Base](assets/IR_Hub_Base.stl)
-- [IR Hub Lid](assets/IR_Hub_Lid.stl)
+- [IR Hub Base](assets/IR_Hub_Base.3mf)
+- [IR Hub Lid](assets/IR_Hub_Lid.3md)
 
 &nbsp;
 ## All in One Wiring Diagram
